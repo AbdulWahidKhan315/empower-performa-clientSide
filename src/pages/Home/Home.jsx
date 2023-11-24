@@ -1,9 +1,10 @@
+import AutoPlay from "./Home/SliderSlik";
 
 
 const Home = () => {
     return (
         <div>
-            <h1 className="text-4xl">This is Home</h1>          
+            <AutoPlay></AutoPlay>          
         </div>
     );
 };

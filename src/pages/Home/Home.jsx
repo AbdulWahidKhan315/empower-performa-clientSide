@@ -1,10 +1,12 @@
+import Services from "./Home/Services";
 import AutoPlay from "./Home/SliderSlik";
 
 
 const Home = () => {
     return (
         <div>
-            <AutoPlay></AutoPlay>          
+            <AutoPlay></AutoPlay>    
+            <Services></Services>      
         </div>
     );
 };

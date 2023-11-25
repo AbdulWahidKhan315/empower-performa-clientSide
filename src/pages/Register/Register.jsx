@@ -15,7 +15,11 @@ const Register = () => {
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name, photo, email, password)
+        const role = e.target.role.value;
+        const bankAccout = e.target.bankAccount.value;
+        const salary = e.target.salary.value;
+        const designation = e.target.designation.value;
+        console.log(role,bankAccout,salary,designation)
         createUser(email, password)
             .then(() => {
                 updateUserProfile(name, photo)
@@ -48,13 +52,46 @@ const Register = () => {
                         <h1 className="text-5xl font-bold text-green-500">Register now!</h1>
                         <p className="py-6 font-semibold">Please register in our website. By completing the registration you will get the premium service from our website.</p>
                     </div>
-                    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-green-200 md:ml-36">
+                    <div className="card md:w-full shadow-2xl bg-green-200 ">
                         <form className="card-body" onSubmit={handleRegister}>
-                            <div className="form-control">
+                            <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Name</span>
+                                    <span className="label-text">Select A Role*</span>
                                 </label>
-                                <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                                <select defaultValue='default' name="role" className="select select-bordered w-full" required>
+                                    <option disabled value='default'>Select a Role..</option>
+                                    <option value="employee">Employee</option>
+                                    <option value="hr">HR</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                            <div className="flex flex-col md:flex-row gap-2">
+                                <div className="form-control flex-1">
+                                    <label className="label">
+                                        <span className="label-text">Name</span>
+                                    </label>
+                                    <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+                                </div>
+                                <div className="form-control flex-1">
+                                    <label className="label">
+                                        <span className="label-text">Bank Account No.</span>
+                                    </label>
+                                    <input type="text" name="bankAccount" placeholder="Bank Account No." className="input input-bordered" required />
+                                </div>
+                            </div>
+                            <div className="flex flex-col md:flex-row gap-2">
+                                <div className="form-control flex-1">
+                                    <label className="label">
+                                        <span className="label-text">Salary</span>
+                                    </label>
+                                    <input type="text" name="salary" placeholder="Salary" className="input input-bordered" required />
+                                </div>
+                                <div className="form-control flex-1">
+                                    <label className="label">
+                                        <span className="label-text">Designation</span>
+                                    </label>
+                                    <input type="text" name="designation" placeholder="Designation" className="input input-bordered" required />
+                                </div>
                             </div>
                             <div className="form-control">
                                 <label className="label">

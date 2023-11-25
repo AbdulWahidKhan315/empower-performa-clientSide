@@ -158,6 +158,15 @@ const Navbar = () => {
                                     <span onClick={handleSignOut}>Logout</span>
                                 </NavLink>
                             </li>
+                            <li role="none" className="flex items-stretch">
+                                <NavLink
+                                to={'/dashboard/HRHome'}
+                                    role="menuitem"
+                                    aria-haspopup="false"
+                                    className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
+                                    <span>Dashoboard</span>
+                                </NavLink>
+                            </li>
                         </ul>
                         <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
                             {/*        <!-- Avatar --> */}

@@ -13,16 +13,16 @@ const Services = () => {
                         <img
                             src={img1}
                             alt="card image"
-                            className="aspect-video w-full"
+                            className="aspect-video w-full border-x-8 border-b-8 border-green-400 rounded-t-3xl"
                         />
                     </figure>
                     {/*  <!-- Body--> */}
-                    <div className="p-6">
+                    <div className="p-6 border-2 border-green-300">
                         <header className="">
                             <h3 className="text-xl font-medium text-slate-700">
                                 Software Development
                             </h3>
-                            <p className="text-sm text-slate-400"> By George, jun 3 2023</p>
+                            <p className="text-sm text-slate-400"> Software development is the process of designing, creating, testing, and maintaining different software applications.</p>
                         </header>
                     </div>
                 </div>
@@ -32,16 +32,16 @@ const Services = () => {
                         <img
                             src={img2}
                             alt="card image"
-                            className="aspect-video w-full"
+                            className="aspect-video w-full border-x-8 border-b-8 border-green-400 rounded-t-3xl"
                         />
                     </figure>
                     {/*  <!-- Body--> */}
-                    <div className="p-6">
+                    <div className="p-6 border-2 border-green-300">
                         <header className="">
                             <h3 className="text-xl font-medium text-slate-700">
                                 Marketing
                             </h3>
-                            <p className="text-sm text-slate-400"> By George, jun 3 2023</p>
+                            <p className="text-sm text-slate-400">  Marketing refers to activities a company undertakes to promote the buying or selling of a product or service.</p>
                         </header>
                     </div>
                 </div>
@@ -51,16 +51,16 @@ const Services = () => {
                         <img
                             src={img3}
                             alt="card image"
-                            className="aspect-video w-full"
+                            className="aspect-video w-full border-x-8 border-b-8 border-green-400 rounded-t-3xl"
                         />
                     </figure>
                     {/*  <!-- Body--> */}
-                    <div className="p-6">
+                    <div className="p-6 border-2 border-green-300">
                         <header className="">
                             <h3 className="text-xl font-medium text-slate-700">
                                 Product Testing
                             </h3>
-                            <p className="text-sm text-slate-400"> By George, jun 3 2023</p>
+                            <p className="text-sm text-slate-400">Product testing is a method of analyzing a product concept, feature or functionality to determine how potential customers may use or react to the product.</p>
                         </header>
                     </div>
                 </div>
@@ -70,16 +70,16 @@ const Services = () => {
                         <img
                             src={img4}
                             alt="card image"
-                            className="aspect-video w-full"
+                            className="aspect-video w-full border-x-8 border-b-8 border-green-400 rounded-t-3xl"
                         />
                     </figure>
                     {/*  <!-- Body--> */}
-                    <div className="p-6">
+                    <div className="p-6 border-2 border-green-300">
                         <header className="">
                             <h3 className="text-xl font-medium text-slate-700">
                                 Deployment
                             </h3>
-                            <p className="text-sm text-slate-400"> By George, jun 3 2023</p>
+                            <p className="text-sm text-slate-400">the act or movement of deploying or the state of being deployed: such as. a. : placement or arrangement (as of military personnel or equipment) in position for a particular use or purpose.</p>
                         </header>
                     </div>
                 </div>

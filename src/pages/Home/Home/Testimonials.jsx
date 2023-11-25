@@ -8,7 +8,7 @@ export default class PauseOnHover extends Component {
         var settings = {
             dots: true,
             infinite: true,
-            slidesToShow: 3,
+            slidesToShow: 2,
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 2000,
@@ -19,13 +19,12 @@ export default class PauseOnHover extends Component {
                 <h2 className='text-center mb-10 text-4xl italic animate-pulse font-bold text-green-500'>Testimonials</h2>
                 <Slider {...settings}>
                     <div>
-                        <div className="overflow-hidden rounded bg-green-100 text-slate-500 shadow-2xl shadow-blue-500">
+                        <div className="overflow-hidden rounded bg-green-100 text-slate-500 shadow-2xl shadow-blue-500 text-sm">
                             <div className="relative p-6">
                                 <figure className="relative z-10">
                                     <blockquote className="p-6 text-lg leading-relaxed">
                                         <p>
-                                            Wind-ui, is probably one of the best libraries Ive came across.
-                                            Good looking, easy to use and above all super accessible.
+                                        Switching to [Empower Performa] has been a game-changer for our HR processes. The intuitive interface, streamlined payroll management, and robust reporting features have saved us valuable time
                                         </p>
                                     </blockquote>
                                     <figcaption className="flex flex-col items-start gap-2 p-6 pt-0 text-sm text-emerald-500">
@@ -111,7 +110,7 @@ export default class PauseOnHover extends Component {
                                             <div className="flex flex-col gap-1">
                                                 <span className="font-bold uppercase">Hashley Anthom</span>
                                                 <cite className="not-italic">
-                                                    <a href="http://www.microsoft.com">CEO, OnBlich</a>
+                                                    <a href="http://www.microsoft.com">HR, Manager</a>
                                                 </cite>
                                             </div>
                                         </div>
@@ -138,8 +137,7 @@ export default class PauseOnHover extends Component {
                                 <figure className="relative z-10">
                                     <blockquote className="p-6 text-lg leading-relaxed">
                                         <p>
-                                            Wind-ui, is probably one of the best libraries Ive came across.
-                                            Good looking, easy to use and above all super accessible.
+                                        [Empower Performa] has simplified team collaboration and project management. The integrated task tracking and real-time communication features have enhanced our workflow.
                                         </p>
                                     </blockquote>
                                     <figcaption className="flex flex-col items-start gap-2 p-6 pt-0 text-sm text-emerald-500">
@@ -223,9 +221,9 @@ export default class PauseOnHover extends Component {
                                         </span>
                                         <div className="flex items-center gap-4 pt-4 text-sm text-emerald-500">
                                             <div className="flex flex-col gap-1">
-                                                <span className="font-bold uppercase">Hashley Anthom</span>
+                                                <span className="font-bold uppercase">Emily Satuatam</span>
                                                 <cite className="not-italic">
-                                                    <a href="http://www.microsoft.com">CEO, OnBlich</a>
+                                                    <a href="http://www.microsoft.com">Team Lead</a>
                                                 </cite>
                                             </div>
                                         </div>
@@ -252,8 +250,7 @@ export default class PauseOnHover extends Component {
                                 <figure className="relative z-10">
                                     <blockquote className="p-6 text-lg leading-relaxed">
                                         <p>
-                                            Wind-ui, is probably one of the best libraries Ive came across.
-                                            Good looking, easy to use and above all super accessible.
+                                        As an IT administrator, security is paramount. [Your Employee Management System] impressed me with its top-notch security measures. The access controls, data encryption, and regular updates give me peace of mind. 
                                         </p>
                                     </blockquote>
                                     <figcaption className="flex flex-col items-start gap-2 p-6 pt-0 text-sm text-emerald-500">
@@ -337,9 +334,9 @@ export default class PauseOnHover extends Component {
                                         </span>
                                         <div className="flex items-center gap-4 pt-4 text-sm text-emerald-500">
                                             <div className="flex flex-col gap-1">
-                                                <span className="font-bold uppercase">Hashley Anthom</span>
+                                                <span className="font-bold uppercase">Alex Monach</span>
                                                 <cite className="not-italic">
-                                                    <a href="http://www.microsoft.com">CEO, OnBlich</a>
+                                                    <a href="http://www.microsoft.com">IT Administrator</a>
                                                 </cite>
                                             </div>
                                         </div>
@@ -366,8 +363,7 @@ export default class PauseOnHover extends Component {
                                 <figure className="relative z-10">
                                     <blockquote className="p-6 text-lg leading-relaxed">
                                         <p>
-                                            Wind-ui, is probably one of the best libraries Ive came across.
-                                            Good looking, easy to use and above all super accessible.
+                                        I love the self-service features of [Empower Performa]. From submitting leave requests to accessing pay stubs, everything is at my fingertips. The mobile-friendly interface makes it easy to stay connected even when I am on the go.
                                         </p>
                                     </blockquote>
                                     <figcaption className="flex flex-col items-start gap-2 p-6 pt-0 text-sm text-emerald-500">
@@ -451,9 +447,9 @@ export default class PauseOnHover extends Component {
                                         </span>
                                         <div className="flex items-center gap-4 pt-4 text-sm text-emerald-500">
                                             <div className="flex flex-col gap-1">
-                                                <span className="font-bold uppercase">Hashley Anthom</span>
+                                                <span className="font-bold uppercase">Lisa Worthoma</span>
                                                 <cite className="not-italic">
-                                                    <a href="http://www.microsoft.com">CEO, OnBlich</a>
+                                                    <a href="http://www.microsoft.com">Employee</a>
                                                 </cite>
                                             </div>
                                         </div>

@@ -4,7 +4,14 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false)
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = ()=>{
+        logOut()
+        .then()
+        .catch()
+    }
+
     return (
         <>
             {/*<!-- Component: Navbar with Avatar --> */}
@@ -114,6 +121,21 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                             <li role="none" className="flex items-stretch">
+                                <NavLink to={'/login'}
+                                    style={({ isActive, isPending, isTransitioning }) => {
+                                        return {
+                                            fontWeight: isPending ? "bold" : "",
+                                            color: isActive ? "green" : "black",
+                                            viewTransitionName: isTransitioning ? "slide" : "",
+                                        };
+                                    }}
+                                    role="menuitem"
+                                    aria-haspopup="false"
+                                    className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
+                                    <span>LogIn</span>
+                                </NavLink>
+                            </li>
+                            <li role="none" className="flex items-stretch">
                                 <NavLink to={'/aboutUs'}
                                     style={({ isActive, isPending, isTransitioning }) => {
                                         return {
@@ -133,7 +155,7 @@ const Navbar = () => {
                                     role="menuitem"
                                     aria-haspopup="false"
                                     className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
-                                    <span>Logout</span>
+                                    <span onClick={handleSignOut}>Logout</span>
                                 </NavLink>
                             </li>
                         </ul>

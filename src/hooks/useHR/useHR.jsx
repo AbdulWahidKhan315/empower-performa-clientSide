@@ -1,0 +1,20 @@
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import useAxiosSecure from "../useAxiosSecure/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+
+
+const useHR = () => {
+    const { user } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
+    const {data: isHR, ispending: isHRLoading}=useQuery({
+        queryKey: [user?.email, 'isHR'],
+        queryFn: async()=>{
+            const res = await axiosSecure.get(`/users/HR/${user?.email}`);
+            return res.data?.hr;
+        }
+    })
+    return [isHR, isHRLoading]
+};
+
+export default useHR;

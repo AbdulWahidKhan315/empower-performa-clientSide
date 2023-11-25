@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import loginImg from '../../assets/images/login.jpg'
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxioPublic/useAxiosPublic";
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
     const [showPassword, setShowPassword] = useState(false);
     const { createUser, updateUserProfile } = useContext(AuthContext)
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -19,18 +22,34 @@ const Register = () => {
         const bankAccout = e.target.bankAccount.value;
         const salary = e.target.salary.value;
         const designation = e.target.designation.value;
-        console.log(role,bankAccout,salary,designation)
         createUser(email, password)
             .then(() => {
                 updateUserProfile(name, photo)
                     .then(() => {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Your work has been saved",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
+                        const userInfo = {
+                            name,
+                            photo,
+                            email,
+                            role,
+                            bankAccout,
+                            salary,
+                            designation,
+                            verified: false
+                        }
+                        axiosPublic.post('/allusers', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Register Successfully",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
+
                     })
             })
             .catch(err => {

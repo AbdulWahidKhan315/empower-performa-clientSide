@@ -6,6 +6,7 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Dashoboard from "../Layout/Dashoboard";
 import HRHome from "../pages/Dashboard/HRHome/HRHome";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/HRhome',
                 element: <HRHome></HRHome>
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <Payment></Payment>
             }
         ]
     }

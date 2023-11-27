@@ -26,7 +26,6 @@ const DetailsForHR = () => {
                 setChartData(res.data);
             })
     }, [axiosSecure, employeeDetails])
-    console.log(chartData)
 
     
     return (
@@ -42,6 +41,7 @@ const DetailsForHR = () => {
                 </div>
             </div>
             <div>
+                <h1 className="text-4xl my-4 underline underline-offset-8 font-bold text-green-700">Employee Salary Chart:</h1>
                 <BarChart
                     width={600}
                     height={400}

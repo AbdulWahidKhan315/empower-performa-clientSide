@@ -26,7 +26,7 @@ const CheckoutForm = ({ salary, date, email }) => {
                     setClientSecret(res.data.clientSecret)
                 })
         }
-    }, [axiosSecure, totalSalary])
+    }, [axiosSecure, totalSalary,date])
 
     const handleSubmit = async (e) => {
         e.preventDefault();

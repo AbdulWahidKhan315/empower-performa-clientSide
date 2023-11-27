@@ -8,6 +8,8 @@ import Dashoboard from "../Layout/Dashoboard";
 import HRHome from "../pages/Dashboard/HRHome/HRHome";
 import Payment from "../pages/Dashboard/Payment/Payment";
 import DetailsForHR from "../pages/Dashboard/DetailsForHR/DetailsForHR";
+import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
+import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 
 export const router = createBrowserRouter([
     {
@@ -37,6 +39,10 @@ export const router = createBrowserRouter([
         element: <Dashoboard></Dashoboard>,
         children: [
             {
+                path: '/dashboard/dashboardHome',
+                element: <DashboardHome></DashboardHome>
+            },
+            {
                 path: '/dashboard/HRhome',
                 element: <HRHome></HRHome>
             },
@@ -47,6 +53,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/userDetailsForHR/:id',
                 element: <DetailsForHR></DetailsForHR>
+            },
+            {
+                path: '/dashboard/paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
             }
         ]
     }

@@ -160,7 +160,7 @@ const Navbar = () => {
                             </li>
                             <li role="none" className="flex items-stretch">
                                 <NavLink
-                                to={'/dashboard/HRHome'}
+                                to={'/dashboard/dashboardHome'}
                                     role="menuitem"
                                     aria-haspopup="false"
                                     className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">

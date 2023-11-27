@@ -32,6 +32,11 @@ const Dashoboard = () => {
                                     Payment History
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to={'/dashboard/workSheet'}>
+                                    Word Sheet
+                                </NavLink>
+                            </li>
                         </>
                     }
                     <div className="divider"></div>

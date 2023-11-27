@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const CheckoutForm = ({ salary, date }) => {
+const CheckoutForm = ({ salary, date, email }) => {
     const { user } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
@@ -69,7 +69,7 @@ const CheckoutForm = ({ salary, date }) => {
             if (paymentIntent.status === 'succeeded') {
                 setTransactionId(paymentIntent.id)
                 const payment = {
-                    email: user.email,
+                    email: email,
                     amount: totalSalary,
                     transactionId: paymentIntent.id,
                     date: date,

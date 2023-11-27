@@ -42,6 +42,7 @@ const HRHome = () => {
                                 <th>Bank Ac No.</th>
                                 <th>Designation</th>
                                 <th>salary</th>
+                                <th>Details</th>
                                 <th>Verified Status</th>
                             </tr>
                         </thead>
@@ -69,16 +70,21 @@ const HRHome = () => {
                                         <td>
                                             {
                                                 employ.verified == true &&
-                                                        <Link to={`/dashboard/payment/${employ._id}`}>
-                                                            <button className="btn btn-ghost font-bold text-green-300">Pay</button>
-                                                        </Link>
+                                                <Link to={`/dashboard/payment/${employ._id}`}>
+                                                    <button className="btn btn-ghost font-bold text-green-300">Pay</button>
+                                                </Link>
                                             }
                                             {
-                                                employ.verified == false && 
+                                                employ.verified == false &&
                                                 <button className="btn btn-ghost font-bold text-green-300" disabled>Pay</button>
                                             }
                                         </td>
                                         <td>{employ.salary}</td>
+                                        <td>
+                                            <Link to={`/dashboard/userDetailsForHR/${employ._id}`}>
+                                                <button className="btn btn-ghost font-bold text-violet-500">Details</button>
+                                            </Link>
+                                        </td>
                                         <th>
                                             <button onClick={() => handleVerified(employ._id)} className="btn btn-ghost">{employ.verified == true ? <FaCheck className="text-3xl font-bold text-green-500"></FaCheck> : <RxCross2 className="text-3xl font-bold text-red-500"></RxCross2>}</button>
                                         </th>

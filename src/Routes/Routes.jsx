@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import Dashoboard from "../Layout/Dashoboard";
 import HRHome from "../pages/Dashboard/HRHome/HRHome";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import DetailsForHR from "../pages/Dashboard/DetailsForHR/DetailsForHR";
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>
+            },
+            {
+                path: '/dashboard/userDetailsForHR/:id',
+                element: <DetailsForHR></DetailsForHR>
             }
         ]
     }

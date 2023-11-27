@@ -14,7 +14,7 @@ const Payment = () => {
     const axiosSecure = useAxiosSecure();
     const id = param.id;
     const [date,setDate]=useState('')
-
+    
     const { data: employeePayment } = useQuery({
         queryKey: ['employeePayment'],
         queryFn: async () => {
@@ -22,8 +22,14 @@ const Payment = () => {
             return res.data;
         }
     })
+
+    const [salary, setSalary]=useState(employeePayment.salary)
+
     const handleMonth=(e)=>{
         setDate(e.target.value);
+    }
+    const handleSalary=(e)=>{
+        setSalary(e.target.value);
     }
 
     return (
@@ -35,11 +41,15 @@ const Payment = () => {
                     <span className="label-text font-bold">ATTENTION: Select Month to pay</span>
                 </label>
                 <input type="month" onChange={handleMonth}  className='input input-bordered' name="month" id="" />
+                <label className="label">
+                    <span className="label-text font-bold">Salary</span>
+                </label>
+                <input type="number" onChange={handleSalary} defaultValue={employeePayment?.salary}  className='input input-bordered' name="month" id="" />
             </div>
             {/* stripe payment */}
             <div className='my-8 bg-green-100 p-8 rounded-3xl'>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm salary={employeePayment?.salary} date={date}></CheckoutForm>
+                    <CheckoutForm salary={salary} date={date} email={employeePayment?.email}></CheckoutForm>
                 </Elements>
             </div>
         </div>

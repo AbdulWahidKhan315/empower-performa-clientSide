@@ -11,7 +11,8 @@ import { useQuery } from "@tanstack/react-query";
 const WorkSheet = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext);
-    const [count,setCount]=useState(0)
+    const [count,setCount]=useState(0);
+    const [task,setTask]=useState('')
     const axiosSecure = useAxiosSecure();
 
     const { data: workSheets = [], refetch } = useQuery({
@@ -22,6 +23,10 @@ const WorkSheet = () => {
         }
     })
 
+    const handleSelectTask=(e)=>{
+        setTask(e.target.value)
+    }
+
     const newCount = workSheets?.sort((a,b)=>{
         const num1 = a.count;
         const num2 = b.count;
@@ -31,7 +36,7 @@ const WorkSheet = () => {
     })
     const finalCount = newCount[0]?.count;
     useEffect(()=>{
-        setCount(finalCount);
+        setCount(finalCount ? finalCount : 0);
     },[finalCount])
     
 
@@ -52,9 +57,11 @@ const WorkSheet = () => {
     } = useForm();
     const onSubmit = data => {
         const works = {
-            ...data, date: startDate,
+            ...data, date: startDate.toLocaleDateString("fr-FR"),
             email: user?.email,
-            count: count + 1
+            count: count + 1,
+            name: user?.displayName,
+            task: task
         }
         // console.log(works)
         axiosSecure.post('/works', works)
@@ -85,6 +92,7 @@ const WorkSheet = () => {
                             <thead>
                                 <tr className="bg-green-300">
                                     <th>No.</th>
+                                    <th>Name</th>
                                     <th>Date</th>
                                     <th>Hours</th>
                                     <th>Task</th>
@@ -96,6 +104,7 @@ const WorkSheet = () => {
                                     workSheets.sort(customSort).map((work) =>
                                         <tr key={work._id} className="bg-green-100">
                                             <th>{work.count}</th>
+                                            <th>{work.name}</th>
                                             <td>{work?.date}</td>
                                             <td>{work.hours}</td>
                                             <td>{work.task}</td>
@@ -116,7 +125,7 @@ const WorkSheet = () => {
                                 <label className="label">
                                     <span className="label-text">Select A Task*</span>
                                 </label>
-                                <select {...register("task", { required: true })} name="role" className="select select-bordered w-full" required>
+                                <select onChange={handleSelectTask}  name="role" className="select select-bordered w-full" required>
                                     <option value="sales">Sales</option>
                                     <option value="support">Support</option>
                                     <option value="content">Content</option>

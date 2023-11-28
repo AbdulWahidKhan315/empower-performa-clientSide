@@ -12,6 +12,7 @@ import PaymentHistory from "../pages/Dashboard/PaymentHistory/PaymentHistory";
 import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import WorkSheet from "../pages/Dashboard/WorkSheet/WorkSheet";
 import AllEmployeeList from "../pages/Dashboard/AllEmployeeList/AllEmployeeList";
+import Progress from "../pages/Dashboard/Progress/Progress";
 
 export const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/userDetailsForHR/:id',
                 element: <DetailsForHR></DetailsForHR>
+            },
+            {
+                path: '/dashboard/progress',
+                element: <Progress></Progress>
             },
             {
                 path: '/dashboard/paymentHistory',

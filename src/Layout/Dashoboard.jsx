@@ -34,6 +34,11 @@ const Dashoboard = () => {
                                     Employee List
                                 </NavLink>
                             </li>
+                            <li>
+                                <NavLink to={'/dashboard/progress'}>
+                                    Progress
+                                </NavLink>
+                            </li>
                         </>
                     }
                     {

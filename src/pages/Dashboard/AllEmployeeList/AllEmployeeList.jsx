@@ -15,11 +15,10 @@ const AllEmployeeList = () => {
             return res.data;
         }
     })
-    console.log(allUsersList)
     const verifiedEmployee = allUsersList?.filter(user => user.verified === true)
     const onlyHR = allUsersList?.filter(user => user.role === 'hr');
 
-    const handleMakeHR = (id)=>{
+    const handleMakeHR = (id) => {
         Swal.fire({
             title: "Do you want to make him/her HR",
             icon: "info",
@@ -27,22 +26,54 @@ const AllEmployeeList = () => {
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, I want!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 axiosSecure.patch(`/admin/makeHR/${id}`)
-                .then(res => {
-                    if(res.data.modifiedCount > 0){
-                        Swal.fire({
-                            title: "Success!",
-                            text: "This user became HR.",
-                            icon: "success"
-                          });
-                    }
-                    refetch();
-                })
-            
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+                                title: "Success!",
+                                text: "This user became HR.",
+                                icon: "success"
+                            });
+                            refetch().then(()=>{
+                                refetch();
+                            });
+                        }
+                    })
+
             }
-          });
+        });
+    }
+
+    const handleFire = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You want to fire this user!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, I Want!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(id)
+
+                axiosSecure.put(`/admin/makeFired/${id}`)
+                    .then(res => {
+                        if (res.data.modifiedCount > 0) {
+                            Swal.fire({
+                                title: "Fired!",
+                                text: "User has been Fired successfully.",
+                                icon: "success"
+                            });
+                        }
+                        refetch();
+                    })
+
+
+            }
+        });
     }
 
     return (
@@ -66,15 +97,19 @@ const AllEmployeeList = () => {
                                     <td>{verified?.name}</td>
                                     <td>{verified.designation}</td>
                                     <td>
-                                        <button onClick={()=> handleMakeHR(verified._id)} className="btn btn-outline btn-success">Make HR</button>
+                                        <button onClick={() => handleMakeHR(verified._id)} className="btn btn-outline btn-success">Make HR</button>
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline btn-success">Fire</button>
+                                        {
+                                            verified?.status ? <span className="font-bold text-red-500">{verified.status}</span>
+                                                :
+                                                <button onClick={() => handleFire(verified._id)} className="btn btn-outline btn-success">Fire</button>
+                                        }
                                     </td>
                                 </tr>)
                         }
                         {
-                            onlyHR?.map((hr)=>
+                            onlyHR?.map((hr) =>
                                 <tr key={hr._id} className="bg-green-100">
                                     <td>{hr.name}</td>
                                     <td>{hr.designation}</td>
@@ -82,10 +117,14 @@ const AllEmployeeList = () => {
                                         <h1 className="text-xl font-bold text-violet-600">--HR--</h1>
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline btn-success">Fire</button>
+                                    {
+                                            hr?.status ? <span className="font-bold text-red-500">{hr.status}</span>
+                                                :
+                                                <button onClick={() => handleFire(hr._id)} className="btn btn-outline btn-success">Fire</button>
+                                        }
                                     </td>
                                 </tr>
-                                )
+                            )
                         }
 
                     </tbody>

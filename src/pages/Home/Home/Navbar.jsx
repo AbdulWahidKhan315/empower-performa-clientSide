@@ -5,11 +5,14 @@ import { AuthContext } from '../../../providers/AuthProvider';
 const Navbar = () => {
     const [isToggleOpen, setIsToggleOpen] = useState(false)
     const { user, logOut } = useContext(AuthContext);
+    const [dropDown, setDropDown] = useState(false)
 
-    const handleSignOut = ()=>{
+    const handleSignOut = () => {
         logOut()
-        .then()
-        .catch()
+            .then(()=>{
+                setDropDown(false)
+            })
+            .catch()
     }
 
     return (
@@ -84,7 +87,7 @@ const Navbar = () => {
                         <ul
                             role="menubar"
                             aria-label="Select page"
-                            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90 px-8 pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen
+                            className={`absolute top-0 left-0 z-[-1] h-[28.5rem] w-full justify-center overflow-hidden  overflow-y-auto overscroll-contain bg-white/90  pb-12 pt-24 font-medium transition-[opacity,visibility] duration-300 lg:visible lg:relative lg:top-0  lg:z-0 lg:flex lg:h-full lg:w-auto lg:items-stretch lg:overflow-visible lg:bg-white/0 lg:px-0 lg:py-0  lg:pt-0 lg:opacity-100 ${isToggleOpen
                                 ? "visible opacity-100 backdrop-blur-sm"
                                 : "invisible opacity-0"
                                 }`}
@@ -104,37 +107,6 @@ const Navbar = () => {
                                     <span>Home</span>
                                 </NavLink>
                             </li>
-
-                            <li role="none" className="flex items-stretch">
-                                <NavLink to={'/signUp'}
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isPending ? "bold" : "",
-                                            color: isActive ? "green" : "black",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                    role="menuitem"
-                                    aria-haspopup="false"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
-                                    <span>Sign Up</span>
-                                </NavLink>
-                            </li>
-                            <li role="none" className="flex items-stretch">
-                                <NavLink to={'/login'}
-                                    style={({ isActive, isPending, isTransitioning }) => {
-                                        return {
-                                            fontWeight: isPending ? "bold" : "",
-                                            color: isActive ? "green" : "black",
-                                            viewTransitionName: isTransitioning ? "slide" : "",
-                                        };
-                                    }}
-                                    role="menuitem"
-                                    aria-haspopup="false"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
-                                    <span>LogIn</span>
-                                </NavLink>
-                            </li>
                             <li role="none" className="flex items-stretch">
                                 <NavLink to={'/aboutUs'}
                                     style={({ isActive, isPending, isTransitioning }) => {
@@ -150,44 +122,87 @@ const Navbar = () => {
                                     <span>Contact Us</span>
                                 </NavLink>
                             </li>
-                            <li role="none" className="flex items-stretch">
-                                <NavLink
-                                    role="menuitem"
-                                    aria-haspopup="false"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
-                                    <span onClick={handleSignOut}>Logout</span>
-                                </NavLink>
-                            </li>
-                            <li role="none" className="flex items-stretch">
-                                <NavLink
-                                to={'/dashboard/dashboardHome'}
-                                    role="menuitem"
-                                    aria-haspopup="false"
-                                    className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
-                                    <span>Dashoboard</span>
-                                </NavLink>
-                            </li>
+                            {
+                                user ? <>
+                                    <li role="none" className="flex items-stretch">
+                                        <NavLink
+                                            role="menuitem"
+                                            aria-haspopup="false"
+                                            className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
+                                            <span onClick={handleSignOut}>Logout</span>
+                                        </NavLink>
+                                    </li>
+                                    <li role="none" className="flex items-stretch">
+                                        <NavLink
+                                            to={'/dashboard/dashboardHome'}
+                                            role="menuitem"
+                                            aria-haspopup="false"
+                                            className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
+                                            <span>Dashoboard</span>
+                                        </NavLink>
+                                    </li>
+                                </> : <>
+                                    <li role="none" className="flex items-stretch">
+                                        <NavLink to={'/login'}
+                                            style={({ isActive, isPending, isTransitioning }) => {
+                                                return {
+                                                    fontWeight: isPending ? "bold" : "",
+                                                    color: isActive ? "green" : "black",
+                                                    viewTransitionName: isTransitioning ? "slide" : "",
+                                                };
+                                            }}
+                                            role="menuitem"
+                                            aria-haspopup="false"
+                                            className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
+                                            <span>LogIn</span>
+                                        </NavLink>
+                                    </li>
+                                    <li role="none" className="flex items-stretch">
+                                        <NavLink to={'/signUp'}
+                                            style={({ isActive, isPending, isTransitioning }) => {
+                                                return {
+                                                    fontWeight: isPending ? "bold" : "",
+                                                    color: isActive ? "green" : "black",
+                                                    viewTransitionName: isTransitioning ? "slide" : "",
+                                                };
+                                            }}
+                                            role="menuitem"
+                                            aria-haspopup="false"
+                                            className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
+                                            <span>Sign Up</span>
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
                         </ul>
-                        <div className="ml-auto flex items-center px-6 lg:ml-0 lg:p-0">
+                        <div className="ml-auto relative flex items-center px-6 lg:ml-0 lg:p-0">
+                            {
+                                dropDown && <ul className="menu absolute right-16 top-2 lg:right-5 lg:top-16 menu-lg bg-green-200  rounded-box">
+                                    <li><button onClick={handleSignOut} className='btn btn-success mx-1 lg:mx-10'>Logout</button></li>
+                                </ul>
+                                
+                            }
                             {/*        <!-- Avatar --> */}
-                            <a
-                                href="#"
-                                className="relative inline-flex h-10 w-10 items-center justify-center rounded-full text-white"
-                            >
-                                {
-                                    user && <img
-                                    src={user.photoURL}
-                                    alt="user name"
-                                    title="user name"
-                                    width="40"
-                                    height="40"
-                                    className="max-w-full rounded-full"
-                                />
-                                }
-                                <span className="absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-pink-500 p-1 text-sm text-white">
-                                    <span className="sr-only"> 7 new emails </span>
-                                </span>
-                            </a>
+                            {
+                                user &&
+                                <a
+                                    href="#"
+                                    className="relative inline-flex h-16 w-16 items-center justify-center rounded-full text-white"
+                                >
+                                    <img
+                                        onClick={()=> setDropDown(!dropDown)}
+                                        src={user?.photoURL}
+                                        alt="user name"
+                                        title="user name"
+                                        width="50"
+                                        height="50"
+                                        className="max-w-full rounded-full"
+                                    />
+                                    <span className="absolute bottom-0 right-0 inline-flex items-center justify-center gap-1 rounded-full border-2 border-white bg-pink-500 p-1 text-sm text-white">
+                                        <span className="sr-only"> 7 new emails </span>
+                                    </span>
+                                </a>
+                            }
                             {/*        <!-- End Avatar --> */}
                         </div>
                     </nav>

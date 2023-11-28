@@ -13,6 +13,7 @@ import DashboardHome from "../pages/Dashboard/DashboardHome/DashboardHome";
 import WorkSheet from "../pages/Dashboard/WorkSheet/WorkSheet";
 import AllEmployeeList from "../pages/Dashboard/AllEmployeeList/AllEmployeeList";
 import Progress from "../pages/Dashboard/Progress/Progress";
+import PrivateRoutes from "./PrivateRoutes"
 
 export const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Dashoboard></Dashoboard>,
+        element: <PrivateRoutes><Dashoboard></Dashoboard></PrivateRoutes>,
         children: [
             {
                 path: '/dashboard/dashboardHome',

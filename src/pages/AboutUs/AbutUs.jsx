@@ -1,3 +1,4 @@
+import Footer from "../../components/Footer/Footer";
 
 const AbutUs = () => {
     return (
@@ -53,6 +54,7 @@ const AbutUs = () => {
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

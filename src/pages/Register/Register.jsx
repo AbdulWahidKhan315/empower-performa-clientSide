@@ -6,60 +6,93 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../hooks/useAxioPublic/useAxiosPublic";
 
+
+
+
 const Register = () => {
     const axiosPublic = useAxiosPublic();
     const [showPassword, setShowPassword] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
 
-    const handleRegister = (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const photo = e.target.photo.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const role = e.target.role.value;
-        const bankAccout = e.target.bankAccount.value;
-        const salary = e.target.salary.value;
-        const designation = e.target.designation.value;
-        createUser(email, password)
-            .then(() => {
-                updateUserProfile(name, photo)
-                    .then(() => {
-                        const userInfo = {
-                            name,
-                            photo,
-                            email,
-                            role,
-                            bankAccout,
-                            salary,
-                            designation,
-                            verified: false
-                        }
-                        axiosPublic.post('/allusers', userInfo)
-                            .then(res => {
-                                if (res.data.insertedId) {
-                                    Swal.fire({
-                                        position: "top-end",
-                                        icon: "success",
-                                        title: "Register Successfully",
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                    navigate('/')
-                                }
-                            })
+    const handleFileChange = (e) => {
+        if (e.target.files.length > 0) {
+            setSelectedFile(e.target.files[0]);
+        }
+    }
 
-                    })
-            })
-            .catch(err => {
-                Swal.fire({
-                    title: 'Error!',
-                    text: `${err.message}`,
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                })
-            })
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        if (selectedFile) {
+            const image_hosting_api = `https://api.imgbb.com/1/upload?key=fcc5016616e41371604a3547c36c8008`;
+            const formData = new FormData();
+            formData.append('image', selectedFile);
+
+            try {
+                const res = await axiosPublic.post(image_hosting_api, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                if (res.data.success) {
+                    const name = e.target.name.value;
+                    const photo = res.data.data.display_url;
+                    const email = e.target.email.value;
+                    const password = e.target.password.value;
+                    const role = e.target.role.value;
+                    const bankAccout = e.target.bankAccount.value;
+                    const salary = e.target.salary.value;
+                    const designation = e.target.designation.value;
+
+                    createUser(email, password)
+                        .then(() => {
+                            updateUserProfile(name, photo)
+                                .then(() => {
+                                    const userInfo = {
+                                        name,
+                                        photo,
+                                        email,
+                                        role,
+                                        bankAccout,
+                                        salary,
+                                        designation,
+                                        verified: false
+                                    }
+                                    axiosPublic.post('/allusers', userInfo)
+                                        .then(res => {
+                                            if (res.data.insertedId) {
+                                                Swal.fire({
+                                                    position: "top-end",
+                                                    icon: "success",
+                                                    title: "Register Successfully",
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                });
+                                                navigate('/')
+                                            }
+                                        })
+
+                                })
+                        })
+                        .catch(err => {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: `${err.message}`,
+                                icon: 'error',
+                                confirmButtonText: 'Cool'
+                            })
+                        })
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        } else {
+            console.error('No file selected');
+        }
+
+
     }
 
     return (
@@ -112,11 +145,11 @@ const Register = () => {
                                     <input type="text" name="designation" placeholder="Designation" className="input input-bordered" required />
                                 </div>
                             </div>
-                            <div className="form-control">
+                            <div className="form-control w-full">
                                 <label className="label">
-                                    <span className="label-text">Photo URL</span>
+                                    <span className="label-text">Photo</span>
                                 </label>
-                                <input type="text" name="photo" placeholder="Photo URL" className="input input-bordered" required />
+                                <input type="file" onChange={handleFileChange} name="file" className="file-input file-input-success w-full max-w-xs" />
                             </div>
                             <div className="form-control">
                                 <label className="label">

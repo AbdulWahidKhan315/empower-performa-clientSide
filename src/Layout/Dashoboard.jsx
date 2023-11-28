@@ -2,11 +2,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import useHR from "../hooks/useHR/useHR";
 import { FaHome } from "react-icons/fa";
 import useEmployee from "../hooks/useEmployee/useEmployee";
+import useAdmin from "../hooks/useAdmin/useAdmin";
 
 
 const Dashoboard = () => {
     const [isHR] = useHR();
     const [isEmployee] = useEmployee();
+    const [isAdmin] = useAdmin();
     return (
         <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-64 lg:h-full lg:min-h-screen bg-green-300">
@@ -14,6 +16,16 @@ const Dashoboard = () => {
                     <li>
                         <NavLink to={'/dashboard/dashboardHome'}>Dashboard Home</NavLink>
                     </li>
+                    {
+                        isAdmin && 
+                        <>
+                            <li>
+                                <NavLink to={'/dashboard/allEmployeeList'}>
+                                    All Employee List
+                                </NavLink>
+                            </li>
+                        </>
+                    }
                     {
                         isHR &&
                         <>

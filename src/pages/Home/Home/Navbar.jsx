@@ -147,7 +147,7 @@ const Navbar = () => {
                                     role="menuitem"
                                     aria-haspopup="false"
                                     className="flex items-center gap-2 py-4 transition-colors duration-300  focus:outline-none focus-visible:outline-none lg:px-8">
-                                    <span>About Us</span>
+                                    <span>Contact Us</span>
                                 </NavLink>
                             </li>
                             <li role="none" className="flex items-stretch">

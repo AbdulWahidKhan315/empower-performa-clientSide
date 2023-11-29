@@ -14,6 +14,9 @@ import WorkSheet from "../pages/Dashboard/WorkSheet/WorkSheet";
 import AllEmployeeList from "../pages/Dashboard/AllEmployeeList/AllEmployeeList";
 import Progress from "../pages/Dashboard/Progress/Progress";
 import PrivateRoutes from "./PrivateRoutes"
+import AdminRoutes from "./AdminRoutes";
+import EmployeeRoutes from "./EmployeeRoutes";
+import HRRoutes from "./HRRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -48,31 +51,31 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/dashboard/HRhome',
-                element: <HRHome></HRHome>
+                element: <HRRoutes><HRHome></HRHome></HRRoutes>
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <Payment></Payment>
+                element: <HRRoutes><Payment></Payment></HRRoutes>
             },
             {
                 path: '/dashboard/userDetailsForHR/:id',
-                element: <DetailsForHR></DetailsForHR>
+                element: <HRRoutes><DetailsForHR></DetailsForHR></HRRoutes>
             },
             {
                 path: '/dashboard/progress',
-                element: <Progress></Progress>
+                element: <HRRoutes><Progress></Progress></HRRoutes>
             },
             {
                 path: '/dashboard/paymentHistory',
-                element: <PaymentHistory></PaymentHistory>
+                element: <EmployeeRoutes><PaymentHistory></PaymentHistory></EmployeeRoutes>
             },
             {
                 path: '/dashboard/workSheet',
-                element: <WorkSheet></WorkSheet>
+                element: <EmployeeRoutes><WorkSheet></WorkSheet></EmployeeRoutes>
             },
             {
                 path: '/dashboard/allEmployeeList',
-                element: <AllEmployeeList></AllEmployeeList>
+                element: <AdminRoutes><AllEmployeeList></AllEmployeeList></AdminRoutes>
             }
         ]
     }

@@ -46,7 +46,7 @@ export default class AutoPlay extends Component {
                         </div>
                     </Slider>
                     <div className="text-center flex justify-center items-center text-green-600">
-                        <h2 className="text-2xl md:text-5xl absolute top-10 font-bold italic">NOW MANAGE EMPLOYEES EFFECTIVELY WITH EASE FROM ANYWHERE</h2>
+                        <h2 className="text-2xl md:text-5xl absolute top-10 font-bold bg-gradient-to-r from-blue-800 via-green-600 to-purple-600 text-transparent bg-clip-text italic">NOW MANAGE EMPLOYEES EFFECTIVELY WITH EASE FROM ANYWHERE</h2>
                     </div>
                 </div>
             </div>

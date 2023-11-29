@@ -137,7 +137,7 @@ export default class PauseOnHover extends Component {
                                 <figure className="relative z-10">
                                     <blockquote className="p-6 text-lg leading-relaxed">
                                         <p>
-                                        [Empower Performa] has simplified team collaboration and project management. The integrated task tracking and real-time communication features have enhanced our workflow.
+                                        [Empower Performa] has simplified team collaboration and project management. The integrated task tracking and real-time communication features have enhanced our workflow. By the way, this is best.
                                         </p>
                                     </blockquote>
                                     <figcaption className="flex flex-col items-start gap-2 p-6 pt-0 text-sm text-emerald-500">

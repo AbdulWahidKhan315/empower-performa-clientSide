@@ -54,7 +54,7 @@ const Dashoboard = () => {
                             </li>
                             <li className="text-gray-950 font-semibold text-base">
                                 <NavLink to={'/dashboard/workSheet'}>
-                                    <SiGooglesheets className="text-green-500 text-lg font-bold"></SiGooglesheets> Word Sheet
+                                    <SiGooglesheets className="text-green-500 text-lg font-bold"></SiGooglesheets> Work Sheet
                                 </NavLink>
                             </li>
                         </>

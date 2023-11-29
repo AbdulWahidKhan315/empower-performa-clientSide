@@ -37,11 +37,11 @@ const Services = () => {
                     </figure>
                     {/*  <!-- Body--> */}
                     <div className="p-6 border-2 border-green-300">
-                        <header className="">
+                        <header>
                             <h3 className="text-xl font-medium text-slate-700">
                                 Marketing
                             </h3>
-                            <p className="text-sm text-slate-400">  Marketing refers to activities a company undertakes to promote the buying or selling of a product or service.</p>
+                            <p className="text-sm text-slate-400">  Marketing refers to activities a company undertakes to promote the buying or selling of a product or service. So, take us</p>
                         </header>
                     </div>
                 </div>

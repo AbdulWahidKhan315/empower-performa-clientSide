@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 const useEmployee = () => {
     const { user } = useContext(AuthContext);
     const axiosSecure = useAxiosSecure();
-    const {data: isEmployee, ispending: isEmployeeLoading}=useQuery({
+    const {data: isEmployee, isLoading: isEmployeeLoading}=useQuery({
         queryKey: [user?.email, 'isEmployee'],
         queryFn: async()=>{
             const res = await axiosSecure.get(`/allusers/employee/${user?.email}`);

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure/useAxiosSecure";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 const WorkSheet = () => {
     const [startDate, setStartDate] = useState(new Date());
     const { user } = useContext(AuthContext);
-    const [count,setCount]=useState(0);
+    // const [count,setCount]=useState(0);
     const [task,setTask]=useState('')
     const axiosSecure = useAxiosSecure();
 
@@ -27,22 +27,26 @@ const WorkSheet = () => {
         setTask(e.target.value)
     }
 
-    const newCount = workSheets?.sort((a,b)=>{
-        const num1 = a.count;
-        const num2 = b.count;
-        if(num1 < num2) return 1;
-        else if(num1>num2) return -1;
-        return 0
-    })
-    const finalCount = newCount[0]?.count;
-    useEffect(()=>{
-        setCount(finalCount ? finalCount : 0);
-    },[finalCount])
+    // const newCount = workSheets?.sort((a,b)=>{
+    //     const num1 = a.count;
+    //     const num2 = b.count;
+    //     if(num1 < num2) return 1;
+    //     else if(num1>num2) return -1;
+    //     return 0
+    // })
+    // const finalCount = newCount[0]?.count;
+    // useEffect(()=>{
+    //     setCount(finalCount ? finalCount : 0);
+    // },[finalCount])
     
 
     const customSort = (a, b) => {
-        const countA = a.count;
-        const countB = b.count;
+        const [day,month,year]=a.date.split('/');
+        const dateAA = new Date(`${year}-${month}-${day}`)
+        const [day1,month1,year1]=b.date.split('/');
+        const dateBB = new Date(`${year1}-${month1}-${day1}`)
+        const countA = dateAA;
+        const countB = dateBB;
         if (countA < countB) return 1;
         else if (countA > countB) return -1;
         return 0;
@@ -59,7 +63,6 @@ const WorkSheet = () => {
         const works = {
             ...data, date: startDate.toLocaleDateString("fr-FR"),
             email: user?.email,
-            count: count + 1,
             name: user?.displayName,
             task: task
         }
@@ -101,9 +104,9 @@ const WorkSheet = () => {
                             <tbody>
 
                                 {
-                                    workSheets.sort(customSort).map((work) =>
+                                    workSheets.sort(customSort).map((work,index) =>
                                         <tr key={work._id} className="bg-green-100">
-                                            <th>{work.count}</th>
+                                            <th>{index + 1}</th>
                                             <th>{work.name}</th>
                                             <td>{work?.date}</td>
                                             <td>{work.hours}</td>

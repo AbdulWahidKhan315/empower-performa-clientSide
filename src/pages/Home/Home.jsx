@@ -6,6 +6,7 @@ import PauseOnHover from "./Home/Testimonials";
 import Welcome from "./Home/Welcome";
 import { AuthContext } from "../../providers/AuthProvider";
 import Loader from "../../components/Loader/Loader";
+import FAQs from "./Home/FAQs";
 
 
 const Home = () => {
@@ -20,6 +21,7 @@ const Home = () => {
                 <div className="w-[85%] mx-auto lg:container lg:mx-auto">
                     <PauseOnHover></PauseOnHover>
                 </div>
+                <FAQs></FAQs>
                 <Footer></Footer>
             </div>
     );

@@ -25,6 +25,7 @@ const Payment = () => {
         }
     })
 
+    const [salary, setSalary] = useState(employeePayment?.salary)
 
     const checkDate = async (temp) => {
         const res = await axiosSecure.get(`/payments/${employeePayment.email}`)
@@ -40,9 +41,9 @@ const Payment = () => {
             return setDate('');
         }
         setDate(temp);
+        setSalary(employeePayment?.salary);
     }
 
-    const [salary, setSalary] = useState(employeePayment?.salary)
 
     const handleMonth = (e) => {
         const temp = e.target.value;

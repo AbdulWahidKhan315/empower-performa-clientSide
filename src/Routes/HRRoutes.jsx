@@ -9,7 +9,6 @@ const HRRoutes = ({children}) => {
     const { user, loading } = useContext(AuthContext);
     const [isHR, isHRLoading]=useHR();
     const location = useLocation();
-    console.log({isHR,user,loading,isHRLoading})
 
     if(loading || isHRLoading){
         return <Loader></Loader>

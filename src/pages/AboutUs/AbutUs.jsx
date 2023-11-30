@@ -42,7 +42,7 @@ const AbutUs = () => {
                             <label className="label">
                                 <span className="label-text">Email:</span>
                             </label>
-                            <input type="text" placeholder="Type here" className="input input-bordered input-primary w-full" />
+                            <input type="text" placeholder="Your Email" className="input input-bordered input-primary w-full" />
                         </div>
                         <div className="form-control">
                             <label className="label">

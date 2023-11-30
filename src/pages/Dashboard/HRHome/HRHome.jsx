@@ -29,7 +29,7 @@ const HRHome = () => {
 
     return (
         <div>
-            <h2 className="text-4xl">All Employee</h2>
+            <h2 className="text-4xl font-bold text-center text-green-500">All Employee</h2>
             <div className="flex justify-end mb-2" >
                 {
                     display ? <h3 onClick={() => setDisplay(!display)} className="border-2 border-green-500 rounded-lg p-2"><FaListUl className="font-bold text-xl "></FaListUl></h3> :

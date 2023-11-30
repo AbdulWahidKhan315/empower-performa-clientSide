@@ -114,7 +114,6 @@ const Register = () => {
                                     <option disabled value='default'>Select a Role..</option>
                                     <option value="employee">Employee</option>
                                     <option value="hr">HR</option>
-                                    <option value="admin">Admin</option>
                                 </select>
                             </div>
                             <div className="flex flex-col md:flex-row gap-2">

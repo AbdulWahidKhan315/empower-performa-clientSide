@@ -88,10 +88,10 @@ const Progress = () => {
                     </select>
                 </div>
             </div>
-            <div className="flex justify-end mb-2 mt-10" onClick={() => setDisplay(!display)} >
+            <div className="flex justify-end mb-2 mt-10"  >
                 {
-                    display ? <h3 className="border-2 border-green-500 rounded-lg p-2"><FaListUl className="font-bold text-xl "></FaListUl></h3> :
-                        <h3 className="border-2 border-green-500 rounded-lg p-2"><BsGrid3X3GapFill className="font-bold text-xl "></BsGrid3X3GapFill></h3>
+                    display ? <h3 onClick={() => setDisplay(!display)} className="border-2 border-green-500 rounded-lg p-2"><FaListUl className="font-bold text-xl "></FaListUl></h3> :
+                        <h3 onClick={() => setDisplay(!display)} className="border-2 border-green-500 rounded-lg p-2"><BsGrid3X3GapFill className="font-bold text-xl "></BsGrid3X3GapFill></h3>
                 }
             </div>
             {

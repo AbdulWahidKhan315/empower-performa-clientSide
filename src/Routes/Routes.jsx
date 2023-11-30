@@ -17,11 +17,13 @@ import PrivateRoutes from "./PrivateRoutes"
 import AdminRoutes from "./AdminRoutes";
 import EmployeeRoutes from "./EmployeeRoutes";
 import HRRoutes from "./HRRoutes";
+import Error from "../pages/ErrorPage/Error";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',

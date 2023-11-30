@@ -4,11 +4,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from '../../assets/images/login.jpg'
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxioPublic/useAxiosPublic";
 
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { signIn } = useContext(AuthContext);
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -17,24 +19,46 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        signIn(email, password)
-            .then(() => {
-                Swal.fire({
-                    title: 'Success!',
-                    text: 'Login Successfully',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                })
-                navigate(location?.state ? location.state : '/')
+        const userInfo = {
+            email: email
+        }
+        axiosPublic.post('/jwt', userInfo)
+            .then(res => {
+                if (res.status === 401) {
+                    console.log('fired user');
+
+                    return;
+                }
+
+                signIn(email, password)
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Login Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        })
+                        navigate(location?.state ? location.state : '/')
+                    })
+                    .catch(() => {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Invalid Email and password! Check your email and password',
+                            icon: 'error',
+                            confirmButtonText: 'Cancel'
+                        })
+                    })
+
             })
             .catch(() => {
                 Swal.fire({
-                    title: 'Error!',
-                    text: 'Invalid Email and password! Check your email and password',
-                    icon: 'error',
-                    confirmButtonText: 'Cancel'
-                })
+                    title: "Fired User",
+                    text: "You can not login.Cause, you are fired by admin",
+                    icon: "error"
+                });
             })
+
+
     }
 
     return (

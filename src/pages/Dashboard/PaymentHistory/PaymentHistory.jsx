@@ -28,10 +28,10 @@ const PaymentHistory = () => {
         <div>
             <h2 className="text-4xl text-center font-bold text-green-500">This is your Payment History</h2>
             <div className="my-10">
-                <div className="flex justify-end mb-2" onClick={() => setDisplay(!display)} >
+                <div className="flex justify-end mb-2" >
                     {
-                        display ? <h3 className="border-2 border-green-500 rounded-lg p-2"><FaListUl className="font-bold text-xl "></FaListUl></h3> :
-                            <h3 className="border-2 border-green-500 rounded-lg p-2"><BsGrid3X3GapFill className="font-bold text-xl "></BsGrid3X3GapFill></h3>
+                        display ? <h3 onClick={() => setDisplay(!display)} className="border-2 border-green-500 rounded-lg p-2"><FaListUl className="font-bold text-xl "></FaListUl></h3> :
+                            <h3 onClick={() => setDisplay(!display)} className="border-2 border-green-500 rounded-lg p-2"><BsGrid3X3GapFill className="font-bold text-xl "></BsGrid3X3GapFill></h3>
                     }
                 </div>
                 {

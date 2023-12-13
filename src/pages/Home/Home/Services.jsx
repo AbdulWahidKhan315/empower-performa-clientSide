@@ -2,12 +2,23 @@ import img1 from '../../../assets/images/softwareDevelopment.jpg'
 import img2 from '../../../assets/images/marketing.jpg'
 import img3 from '../../../assets/images/productTesting.jpg'
 import img4 from '../../../assets/images/deployment.jpg'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 const Services = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: "1000" })
+    }, [])
+
     return (
         <div className=' container mx-auto my-20'>
             <h1 className='text-center mb-10 text-4xl italic animate-pulse font-bold text-green-500'>Our Service</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+                <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="300"
+     data-aos-offset="0" className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                     {/*  <!--  Image --> */}
                     <figure>
                         <img
@@ -26,7 +37,10 @@ const Services = () => {
                         </header>
                     </div>
                 </div>
-                <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+                <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="500"
+     data-aos-offset="0" className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                     {/*  <!--  Image --> */}
                     <figure>
                         <img
@@ -45,7 +59,10 @@ const Services = () => {
                         </header>
                     </div>
                 </div>
-                <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+                <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="700"
+     data-aos-offset="0" className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                     {/*  <!--  Image --> */}
                     <figure>
                         <img
@@ -64,7 +81,10 @@ const Services = () => {
                         </header>
                     </div>
                 </div>
-                <div className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
+                <div data-aos="fade-zoom-in"
+     data-aos-easing="ease-in-back"
+     data-aos-delay="900"
+     data-aos-offset="0" className="overflow-hidden rounded bg-white text-slate-500 shadow-md shadow-slate-200">
                     {/*  <!--  Image --> */}
                     <figure>
                         <img

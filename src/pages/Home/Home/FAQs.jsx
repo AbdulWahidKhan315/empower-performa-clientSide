@@ -1,10 +1,17 @@
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
 
 const FAQs = () => {
+
+    useEffect(() => {
+        AOS.init({ duration: "1000" })
+    }, [])
     return (
         <div className="container mx-auto my-10">
             <h2 className='text-center mb-10 text-4xl italic animate-pulse font-bold text-green-500'>FAQs</h2>
-            <div className="join join-vertical w-full">
+            <div data-aos="fade-up"
+                data-aos-duration="3000" className="join join-vertical w-full">
                 <div className="collapse collapse-arrow join-item border border-base-300">
                     <input type="radio" name="my-accordion-4" checked="checked" />
                     <div className="collapse-title text-xl font-bold text-green-700">
@@ -32,7 +39,7 @@ const FAQs = () => {
                 <div className="collapse collapse-arrow join-item border border-base-300">
                     <input type="radio" name="my-accordion-4" />
                     <div className="collapse-title text-xl font-bold text-green-700">
-                    How does the system handle data security and privacy?
+                        How does the system handle data security and privacy?
                     </div>
                     <div className="collapse-content">
                         <p>Answer: We prioritize the security and privacy of employee data. The system employs robust encryption measures to protect sensitive information. Access to data is restricted based on user roles, and regular security audits are conducted to ensure compliance with industry standards and regulations.</p>
@@ -41,7 +48,7 @@ const FAQs = () => {
                 <div className="collapse collapse-arrow join-item border border-base-300">
                     <input type="radio" name="my-accordion-4" />
                     <div className="collapse-title text-xl font-bold text-green-700">
-                    Can employees update their personal information in the system?
+                        Can employees update their personal information in the system?
                     </div>
                     <div className="collapse-content">
                         <p>Answer: Yes, employees can use the employee self-service feature to update personal information such as contact details, emergency contacts, and other relevant details. However, certain sensitive information may require HR approval or verification.</p>
